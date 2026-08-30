@@ -12,92 +12,60 @@ ALGORITMO
 
 Entradas
 
-Opción de género: 1, 2, 3, 4, 5, 6 
+genero - numero entero del 1 al 6
 
-Opción de duración: 1, 2, 3
+duracion - numero entero del 1 al 3
 
-Opción de calificación: 1, 2, 3
-
-Opción para realizar otra búsqueda: "sí" o "no"
+calificacion  - numero entero del 1 al 3
 
 
 Proceso
 
+1. INICIO.
 
-1.INICIO
+2. MOSTRAR el nombre y la explicación del programa.
 
-2.MOSTRAR el nombre y la explicación del programa.
+3. MOSTRAR las 6 opciones de género.
 
-3.MOSTRAR las 6 opciones de género.
+4. PEDIR al usuario que seleccione un género del 1 al 6.
 
-4.PEDIR al usuario que seleccione un género del 1 al 6.
+5. GUARDAR la selección en la variable genero.
 
-5.GUARDAR la selección en la variable género.
+6. MOSTRAR las 3 opciones de duración.
 
-6.MOSTRAR las 3 opciones de duración.
+7. PEDIR al usuario que seleccione una duración.
 
-7.PEDIR al usuario que seleccione una duración.
+8. GUARDAR la selección en la variable duracion.
 
-8.GUARDAR la selección en la variable duración.
+9. MOSTRAR las 3 opciones de calificación.
 
-9.MOSTRAR las 3 opciones de calificación.
+10. PEDIR al usuario que seleccione una calificación mínima.
 
-10.PEDIR al usuario que seleccione una calificación mínima.
+11. GUARDAR la selección en la variable calificacion.
 
-11.GUARDAR la selección en la variable calificación.
+12. BUSCAR dentro de la lista de películas aquella que coincida con los valores de las variables genero, duracion y calificacion.
 
-12.BUSCAR películas que coincidan exactamente con género, duración y calificación.
+13. MOSTRAR la películas encontradas.
 
-13.SI existen coincidencias exactas:
+14. MOSTRAR la información de la película.
 
- 13.1. MOSTRAR las películas encontradas.
- 
- 13.2. MOSTRAR la información de cada película.
- 
-14.SI NO existen coincidencias exactas:
+15. PREGUNTAR al usuario si desea realizar otra búsqueda.
 
- 14.1. BUSCAR películas que coincidan con género y calificación, permitiendo una diferencia en la duración.
- 
-15.SI existen coincidencias con duración similar:
+16. SI responde "sí":
 
- 15.1. MOSTRAR un mensaje indicando que no hay coincidencias exactas, pero existen películas similares.
- 
- 15.2. MOSTRAR las películas encontradas.
- 
-16.SI NO existen coincidencias con duración similar:
+    16.1. REPETIR el proceso desde el paso 2.
 
- 16.1. BUSCAR películas que coincidan con género y duración, permitiendo una diferencia en la calificación.
- 
-17.SI existen coincidencias con calificación similar:
+17. SI responde "no":
 
- 17.1. MOSTRAR un mensaje indicando que no hay coincidencias exactas, pero existen películas con una calificación similar.
- 
- 17.2. MOSTRAR las películas encontradas.
- 
-18.SI NO existen coincidencias con calificación similar:
+    17.1. MOSTRAR un mensaje de despedida.
 
- 18.1. MOSTRAR un mensaje indicando que no se encontraron películas adecuadas dentro de las preferencias seleccionadas.
- 
-19.PREGUNTAR al usuario si desea realizar otra búsqueda.
-
-20.SI responde "sí":
-
- 20.1. REPETIR el proceso desde el paso 2.
- 
-21.SI responde "no":
-
- 21.1. MOSTRAR un mensaje de despedida.
- 
-22.FIN
+18. FIN.
 
 Salidas
 
-Películas recomendadas.
+Película recomendada.
 
-Información de las películas recomendadas.
-
-Mensaje cuando existen coincidencias parciales.
-
-Mensaje cuando no se encuentran películas adecuadas dentro del género seleccionado.
+Información de la película recomendada.
 
 Mensaje de despedida.
+
