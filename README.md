@@ -45,9 +45,9 @@ Proceso
 
 12. BUSCAR dentro de la lista de películas aquella que coincida con los valores de las variables genero, duracion y calificacion.
 
-13. MOSTRAR la películas encontradas.
+13. MOSTRAR la película encontrada.
 
-14. MOSTRAR la información de la película.
+14. MOSTRAR la información que está guardada en la lista para esa película.
 
 15. PREGUNTAR al usuario si desea realizar otra búsqueda.
 
@@ -63,9 +63,9 @@ Proceso
 
 Salidas
 
-Película recomendada.
+pelicula recomendada - cadena de texto
+informacion pelicula - cadena de texto
+mensaje despedida - cadena de texto
 
-Información de la película recomendada.
 
-Mensaje de despedida.
 
