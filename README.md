@@ -64,7 +64,9 @@ Proceso
 Salidas
 
 pelicula recomendada - cadena de texto
+
 informacion pelicula - cadena de texto
+
 mensaje despedida - cadena de texto
 
 
