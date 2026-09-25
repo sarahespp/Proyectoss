@@ -8,7 +8,7 @@ El proyecto consiste en desarrollar un programa que permita a los usuarios encon
 ¿Por qué es interesante?
 Elegí este proyecto porque me gustan mucho las películas al igual que muchas personas, pero a veces puede ser difícil decidir qué película ver entre tantas opciones. Es por eso que me parece interesante crear una herramienta que utilice información proporcionada por el usuario para ayudarlo a encontrar una película que se adapte a sus preferencias. 
 
-ALGORITMO
+##ALGORITMO
 
 Entradas
 
