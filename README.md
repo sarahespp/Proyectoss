@@ -10,7 +10,7 @@ Elegí este proyecto porque me gustan mucho las películas al igual que muchas p
 
 ## ALGORITMO
 
-Entradas
+### Entradas
 
 genero - numero entero del 1 al 6
 
@@ -19,7 +19,7 @@ duracion - numero entero del 1 al 3
 calificacion  - numero entero del 1 al 3
 
 
-Proceso
+### Proceso
 
 1. INICIO.
 
@@ -61,7 +61,7 @@ Proceso
 
 18. FIN.
 
-Salidas
+### Salidas
 
 pelicula recomendada - cadena de texto
 
