@@ -1,5 +1,5 @@
-# CineMatch Avance 3
-# Uso de funciones
+# CineMatch Avance 4
+# Estructuras de decisión
 
 # Función que muestra el mensaje de bienvenida al usuario
 def mostrar_bienvenida():
@@ -51,7 +51,7 @@ def mostrar_pelicula(nombre_pelicula, duracion_pelicula, calificacion_pelicula):
 
     print("\n--- Pelicula encontrada ---")
     print("Nombre:", nombre_pelicula)
-    print("Duracion:", horas, "horas y", minutos, "minutos")
+    print(f"Duracion: {horas} horas y {minutos} minutos")
     print("Calificacion:", calificacion_pelicula)
 
 # Función que compara el género que busca el usuario con el género de la película
@@ -70,6 +70,13 @@ def comparar_duracion(duracion_escogida, duracion_pelicula):
         return 90 <= duracion_pelicula <= 120
     elif duracion_escogida == 3:
         return duracion_pelicula > 120
+    else:
+        return False
+    
+# Función que decide si la película coincide con las preferencias del usuario
+def decidir_recomendacion(genero_coincide, duracion_coincide, calificacion_coincide):
+    if genero_coincide and duracion_coincide and calificacion_coincide:
+        return True
     else:
         return False
 
@@ -91,11 +98,16 @@ genero_coincide = comparar_genero(genero_escogido, genero_pelicula)
 calificacion_coincide = comparar_calificacion(calificacion_pelicula, calificacion_minima)
 duracion_coincide = comparar_duracion(duracion_escogida, duracion_pelicula)
 
-# Se muestran los datos de la película encontrada
-mostrar_pelicula(nombre_pelicula, duracion_pelicula, calificacion_pelicula)
-
-# Resultados comparativos entre la película seleccionada y lo que busca el usuario
-print("\n--- Resultado de las comparaciones ---")
-print("¿Coincide el genero?", genero_coincide)
-print("¿Cumple la duracion seleccionada?", duracion_coincide)
-print("¿Cumple la calificacion minima?", calificacion_coincide)
+# Se decide si la película coincide con las preferencias
+pelicula_recomendada = decidir_recomendacion(genero_coincide,duracion_coincide,calificacion_coincide)
+if pelicula_recomendada:
+    print("\nEncontramos una pelicula que coincide con tus preferencias!")
+    mostrar_pelicula(nombre_pelicula, duracion_pelicula, calificacion_pelicula)
+else:
+    print("\n La unica pelicula que tenemos actualmente en el " \
+    "programa no coincide conmpletamente con tus preferencias :(")
+    # Resultados comparativos entre la película seleccionada y lo que busca el usuario
+    print("\n--- Resultado de las comparaciones ---")
+    print("¿Coincide el genero?", genero_coincide)
+    print("¿Cumple la duracion seleccionada?", duracion_coincide)
+    print("¿Cumple la calificacion minima?", calificacion_coincide)
