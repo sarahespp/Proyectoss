@@ -1,68 +1,101 @@
-# CineMatch - Avance 2
-# Operadores que se usaran durante todo el proyecto
+# CineMatch Avance 3
+# Uso de funciones
 
-# Bienvenida al usuario
-print("Bienvenido a CineMatch!")
-print("Encuentra una pelicula de acuerdo con tus preferencias.")
+# Función que muestra el mensaje de bienvenida al usuario
+def mostrar_bienvenida():
+    print("Bienvenido a CineMatch!")
+    print("Encuentra una pelicula de acuerdo con tus preferencias.")
 
-# Menu para que el usuario escoja el genero de su pelicula
-print("Generos:")
-print("1. Accion")
-print("2. Comedia")
-print("3. Romance")
-print("4. Suspenso")
-print("5. Ciencia ficcion")
-print("6. Animacion")
-genero_escogido = int(input("Selecciona un genero (1 al 6): "))
+# Función que muestra las opciones de género y guarda la opción seleccionada por el usuario
+def pedir_genero():
+    print("\nGeneros:")
+    print("1. Accion")
+    print("2. Comedia")
+    print("3. Romance")
+    print("4. Suspenso")
+    print("5. Ciencia ficcion")
+    print("6. Animacion")
 
-#Menu para que el usuario escoja la duracion de su pelicula
-print("Duracion:")
-print("1. Corta (menos de 90 minutos)")
-print("2. Media (de 90 a 120 minutos)")
-print("3. Larga (mas de 120 minutos)")
-duracion_escogida = int(input("Selecciona una duracion (1 al 3): "))
+    genero_escogido = int(input("Selecciona un genero (1 al 6): "))
+    return genero_escogido
 
-#El usuario selecciona la calificación minima que debe tener su pelicula
-calificacion_minima = float(input("Indica la calificacion minima que buscas (0 a 10): "))
+# Función que muestra las opciones de duración y guarda la opción seleccionada por el usuario
+def pedir_duracion():
+    print("\nDuracion:")
+    print("1. Corta (menos de 90 minutos)")
+    print("2. Media (de 90 a 120 minutos)")
+    print("3. Larga (mas de 120 minutos)")
 
-# Ejemplo de los datos de una pelicula
+    duracion_escogida = int(input("Selecciona una duracion (1 al 3): "))
+    return duracion_escogida
+
+# Función que pide y guarda la calificación mínima que busca el usuario
+def pedir_calificacion():
+    calificacion_minima = float(input("Indica la calificacion minima que buscas (0 a 10): "))
+    return calificacion_minima
+
+# Función que convierte la duración de una película de minutos a horas
+def calcular_horas(duracion_pelicula):
+    horas = duracion_pelicula // 60
+    return horas
+
+# Función que calcula los minutos que sobran después de convertir la duración a horas
+def calcular_minutos_restantes(duracion_pelicula):
+    minutos = duracion_pelicula % 60
+    return minutos
+
+# Función que muestra en pantalla los datos de la película
+def mostrar_pelicula(nombre_pelicula, duracion_pelicula, calificacion_pelicula):
+    horas = calcular_horas(duracion_pelicula)
+    minutos = calcular_minutos_restantes(duracion_pelicula)
+
+    print("\n--- Pelicula encontrada ---")
+    print("Nombre:", nombre_pelicula)
+    print("Duracion:", horas, "horas y", minutos, "minutos")
+    print("Calificacion:", calificacion_pelicula)
+
+# Función que compara el género que busca el usuario con el género de la película
+def comparar_genero(genero_escogido, genero_pelicula):
+    return genero_escogido == genero_pelicula
+
+# Función que compara la calificación de la película con la calificación mínima que busca el usuario
+def comparar_calificacion(calificacion_pelicula, calificacion_minima):
+    return calificacion_pelicula >= calificacion_minima
+
+# Función que compara la duración que busca el usuario con la duración de la película
+def comparar_duracion(duracion_escogida, duracion_pelicula):
+    if duracion_escogida == 1:
+        return duracion_pelicula < 90
+    elif duracion_escogida == 2:
+        return 90 <= duracion_pelicula <= 120
+    elif duracion_escogida == 3:
+        return duracion_pelicula > 120
+    else:
+        return False
+
+# Programa principal
+# Se ejecutan las funciones para obtener las preferencias del usuario
+mostrar_bienvenida()
+genero_escogido = pedir_genero()
+duracion_escogida = pedir_duracion()
+calificacion_minima = pedir_calificacion()
+
+# Datos de una película de ejemplo
 nombre_pelicula = "Interestelar"
 genero_pelicula = 5
 duracion_pelicula = 169
 calificacion_pelicula = 8.7
 
-# Convertir duracion de minutos a duracion horas y minutos
-duracion_en_horas = duracion_pelicula // 60
-minutos_restantes = duracion_pelicula % 60
+# Se comparan las preferencias del usuario con los datos de la película
+genero_coincide = comparar_genero(genero_escogido, genero_pelicula)
+calificacion_coincide = comparar_calificacion(calificacion_pelicula, calificacion_minima)
+duracion_coincide = comparar_duracion(duracion_escogida, duracion_pelicula)
 
-# Se compara si el género que escogió el usuario es igual al género de la película
-# Se compara si la calificación de la película es mayor o igual a la calificación mínima que busca el usuario
-# Comparaciones que despues se utilizaran en decisiones (if)
-genero_coincide = genero_escogido == genero_pelicula
-calificacion_coincide = calificacion_pelicula >= calificacion_minima
+# Se muestran los datos de la película encontrada
+mostrar_pelicula(nombre_pelicula, duracion_pelicula, calificacion_pelicula)
 
-# Clasificar la duración real de Interestelar en corta, media o larga
-pelicula_corta = duracion_pelicula < 90
-pelicula_media = duracion_pelicula >= 90 and duracion_pelicula <= 120
-pelicula_larga = duracion_pelicula > 120
-
-# En avances posteriores se agregarán decisiones para determinar
-# si la película coincide completamente con las preferencias del usuario.
-# También se incluirán muchas más películas en un catálogo para recomendar varias opciones.
-
-#Menu que se desplegara en la consola
-print("--- Pelicula encontrada ---")
-print("Nombre:", nombre_pelicula)
-print("Duracion:", duracion_en_horas, "horas y", minutos_restantes, "minutos")
-print("Calificacion:", calificacion_pelicula)
-
-#Resultados comparativos entre la pelicula y la pelicula que el usuario busca
-print("--- Resultado de las comparaciones ---")
-print("Tu buscabas el genero:", genero_escogido)
+# Resultados comparativos entre la película seleccionada y lo que busca el usuario
+print("\n--- Resultado de las comparaciones ---")
 print("¿Coincide el genero?", genero_coincide)
-print("Tu buscabas la calificacion minima:", calificacion_minima)
+print("¿Cumple la duracion seleccionada?", duracion_coincide)
 print("¿Cumple la calificacion minima?", calificacion_coincide)
-print("Tu buscabas la duracion:", duracion_escogida)
-print("¿Es una pelicula de duracion corta?", pelicula_corta)
-print("¿Es una pelicula de duracion media?", pelicula_media)
-print("¿Es una pelicula larga?", pelicula_larga)
