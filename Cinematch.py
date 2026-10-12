@@ -1,5 +1,5 @@
-# CineMatch Avance 4
-# Estructuras de decisión
+# CineMatch Avance 5
+# Estructuras de repetición (ciclos)
 
 # Función que muestra el mensaje de bienvenida al usuario
 def mostrar_bienvenida():
@@ -80,34 +80,57 @@ def decidir_recomendacion(genero_coincide, duracion_coincide, calificacion_coinc
     else:
         return False
 
-# Programa principal
-# Se ejecutan las funciones para obtener las preferencias del usuario
-mostrar_bienvenida()
-genero_escogido = pedir_genero()
-duracion_escogida = pedir_duracion()
-calificacion_minima = pedir_calificacion()
+# Función principal del programa
+def main():
+    mostrar_bienvenida()
+    #Variable que controlará el ciclo
+    otra_busqueda="si"
+    while otra_busqueda == "si":
+        genero_escogido = pedir_genero()
+        duracion_escogida = pedir_duracion()
+        calificacion_minima = pedir_calificacion()
+        
+        # Datos de una película de ejemplo
+        nombre_pelicula = "Interestelar"
+        genero_pelicula = 5
+        duracion_pelicula = 169
+        calificacion_pelicula = 8.7
+        
+        # Se comparan las preferencias del usuario con los datos de la película
+        genero_coincide = comparar_genero(genero_escogido, genero_pelicula)
+        calificacion_coincide = comparar_calificacion(calificacion_pelicula, calificacion_minima)
+        duracion_coincide = comparar_duracion(duracion_escogida, duracion_pelicula)
+        
+        # Se decide si la película coincide con las preferencias
+        pelicula_recomendada = decidir_recomendacion(genero_coincide,duracion_coincide,calificacion_coincide)
+        if pelicula_recomendada:
+            print("\nEncontramos una pelicula que coincide con tus preferencias!")
+            mostrar_pelicula(nombre_pelicula, duracion_pelicula, calificacion_pelicula)
+        else:
+            # Resultados comparativos entre la película seleccionada y lo que busca el usuario
+            print("\n La unica pelicula que tenemos actualmente en el " \
+            "programa no coincide completamente con tus preferencias :(")
+            print("\n--- Resultado de las comparaciones ---")
+            print("¿Coincide el genero?", genero_coincide)
+            print("¿Cumple la duracion seleccionada?", duracion_coincide)
+            print("¿Cumple la calificacion minima?", calificacion_coincide)
 
-# Datos de una película de ejemplo
-nombre_pelicula = "Interestelar"
-genero_pelicula = 5
-duracion_pelicula = 169
-calificacion_pelicula = 8.7
+        #Preguntar si el usuario desea realizar otra búsqueda
+        otra_busqueda=input("Quieres realizar otra búsqueda? (si o no): ")
+    print("\nGracias por usar CineMatch!")
 
-# Se comparan las preferencias del usuario con los datos de la película
-genero_coincide = comparar_genero(genero_escogido, genero_pelicula)
-calificacion_coincide = comparar_calificacion(calificacion_pelicula, calificacion_minima)
-duracion_coincide = comparar_duracion(duracion_escogida, duracion_pelicula)
+"""En el avance 6 se incluirá un ciclo for para recorrer la lista de películas.
+Actualmente no se agrega porque las listas se verán en el siguiente avance.
 
-# Se decide si la película coincide con las preferencias
-pelicula_recomendada = decidir_recomendacion(genero_coincide,duracion_coincide,calificacion_coincide)
-if pelicula_recomendada:
-    print("\nEncontramos una pelicula que coincide con tus preferencias!")
-    mostrar_pelicula(nombre_pelicula, duracion_pelicula, calificacion_pelicula)
-else:
-    print("\n La unica pelicula que tenemos actualmente en el " \
-    "programa no coincide conmpletamente con tus preferencias :(")
-    # Resultados comparativos entre la película seleccionada y lo que busca el usuario
-    print("\n--- Resultado de las comparaciones ---")
-    print("¿Coincide el genero?", genero_coincide)
-    print("¿Cumple la duracion seleccionada?", duracion_coincide)
-    print("¿Cumple la calificacion minima?", calificacion_coincide)
+El ciclo será algo así:
+for cada película en la lista
+    comparar género
+    comparar duración
+    comparar calificación
+
+    SI coincide
+        mostrar película
+"""
+
+#Inicio del programa
+main()
