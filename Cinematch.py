@@ -1,192 +1,233 @@
-# CineMatch Avance 6
-# Listas (arreglos)
+# CineMatch Avance 7
+# Matrices
 
-# Listas de películas
-nombre_pelicula = ["Shrek", "Cars", "Cómo entrenar a tu dragón",
-                   "Escuela de Rock", "Son como niños",
-                   "Mentiroso mentiroso", "Titanic",
-                   "Orgullo y prejuicio", "10 cosas que odio de ti",
-                   "Sexto sentido", "Intriga", "Parasite",
-                   "Interestelar", "Jurassic Park", "Volver al futuro"]
+# Matriz que guarda los datos de cada película:
+# nombre, género, duración en minutos y calificación.
+peliculas = [
+    ["Toy Story", "Animación", 81, 8.3],
+    ["Spider-Man: Un nuevo universo (2018)", "Animación", 117, 8.4],
+    ["El rey león", "Animación", 88, 8.5],
+    ["Shrek", "Animación", 90, 7.9],
+    ["Cars", "Animación", 117, 7.2],
+    ["Cómo entrenar a tu dragón", "Animación", 98, 8.1],
 
-genero_pelicula = ["Animación", "Animación", "Animación",
-                   "Comedia", "Comedia", "Comedia",
-                   "Romance", "Romance", "Romance",
-                   "Suspenso", "Suspenso", "Suspenso",
-                   "Ciencia ficción", "Ciencia ficción",
-                   "Ciencia ficción"]
+    ["Escuela de rock", "Comedia", 109, 7.2],
+    ["Son como niños", "Comedia", 102, 6.0],
+    ["Mentiroso, mentiroso", "Comedia", 87, 6.9],
+    ["The Truman Show", "Comedia", 103, 8.2],
+    ["Viernes de locos", "Comedia", 97, 6.3],
 
-duracion_pelicula = [90, 116, 98, 109, 102, 86, 194, 129, 97, 107, 153, 132, 169, 127, 116]
-calificacion_pelicula = [7.9, 7.3, 8.1, 7.2, 6.0, 6.9, 8.0, 7.8, 7.3, 8.2, 8.2, 8.5, 8.7, 8.2, 8.5]
+    ["Orgullo y prejuicio", "Romance", 129, 7.8],
+    ["Diario de una pasión", "Romance", 123, 7.8],
+    ["La La Land", "Romance", 128, 8.0],
+    ["Titanic", "Romance", 195, 7.9],
+    ["10 cosas que odio de ti", "Romance", 97, 7.3],
+    ["Eterno resplandor de una mente sin recuerdos", "Romance", 108, 8.3],
 
-# Función que muestra el mensaje de bienvenida al usuario
+    ["El silencio de los inocentes", "Suspenso", 118, 8.6],
+    ["Sexto sentido", "Suspenso", 107, 8.2],
+    ["Intriga (Prisoners)", "Suspenso", 153, 8.2],
+    ["Parásitos", "Suspenso", 132, 8.5],
+    ["La isla siniestra", "Suspenso", 138, 8.2],
+
+    ["Interestelar", "Ciencia ficción", 169, 8.7],
+    ["Volver al futuro", "Ciencia ficción", 116, 8.5],
+    ["Jurassic Park", "Ciencia ficción", 127, 8.2],
+    ["2001: Odisea del espacio", "Ciencia ficción", 149, 8.3],
+    ["El origen (Inception)", "Ciencia ficción", 148, 8.8],
+    ["La llegada (Arrival)", "Ciencia ficción", 116, 7.9]
+]
+
+# Muestra el mensaje de bienvenida al usuario.
 def mostrar_bienvenida():
-    print("Bienvenido a CineMatch!")
-    print("Encuentra una pelicula de acuerdo con tus preferencias.")
+    print("Bienvenido a CineMatch")
+    print("Encuentra una película de acuerdo con tus preferencias.")
 
-# Función que muestra las opciones de género
+
+# Muestra los géneros disponibles y devuelve el seleccionado.
 def pedir_genero():
-    print("\nGeneros:")
+    print("\nSelecciona un género:")
     print("1. Animación")
     print("2. Comedia")
     print("3. Romance")
     print("4. Suspenso")
-    print("5. Ciencia ficcion")
+    print("5. Ciencia ficción")
 
-    genero_escogido = int(input("Selecciona un genero (1 al 5): "))
-    return genero_escogido
+    genero = int(input("Escribe el número del género que prefieres: "))
 
-# Función que muestra las opciones de duración
+    # Convierte el número elegido en el nombre del género.
+    if genero == 1:
+        return "Animación"
+    elif genero == 2:
+        return "Comedia"
+    elif genero == 3:
+        return "Romance"
+    elif genero == 4:
+        return "Suspenso"
+    else:
+        return "Ciencia ficción"
+
+
+# Pide la duración preferida y devuelve la opción seleccionada.
 def pedir_duracion():
-    print("\nDuracion:")
-    print("1. Corta (menos de 90 minutos)")
-    print("2. Media (de 90 a 120 minutos)")
-    print("3. Larga (mas de 120 minutos)")
+    print("\nSelecciona una duración:")
+    print("1. Corta (menos de 1:30hr)")
+    print("2. Media (entre 1:30hr y 2:hr)")
+    print("3. Larga (más 2 hr)")
 
-    duracion_escogida = int(input("Selecciona una duracion (1 al 3): "))
-    return duracion_escogida
+    duracion = int(input("Escribe el número de la duración que prefieres: "))
+    return duracion
 
-# Función que pide la calificación mínima
+
+# Pide la calificación mínima que debe tener la película.
 def pedir_calificacion():
-    calificacion_minima = float(input("Indica la calificacion minima que buscas (0 a 10): "))
-    return calificacion_minima
+    print("\nSelecciona la calificación mínima:")
+    print("1. 6.0")
+    print("2. 7.0")
+    print("3. 8.0")
 
-# Función que convierte la duración de una película a horas
-def calcular_horas(duracion):
-    horas = duracion // 60
-    return horas
+    calificacion = int(input("Escribe el número de la calificación mínima: "))
+    return calificacion
 
-# Función que calcula los minutos restantes
-def calcular_minutos_restantes(duracion):
-    minutos = duracion % 60
-    return minutos
 
-# Función que muestra los datos de una película
-def mostrar_pelicula(nombre, duracion, calificacion):
+# Convierte la duración en minutos a horas completas.
+def calcular_horas(minutos):
+    return minutos // 60
+
+
+# Obtiene los minutos que sobran después de calcular las horas.
+def calcular_minutos_restantes(minutos):
+    return minutos % 60
+
+
+# Muestra el nombre, género, duración y calificación de una película.
+def mostrar_pelicula(nombre, genero, duracion, calificacion):
     horas = calcular_horas(duracion)
     minutos = calcular_minutos_restantes(duracion)
 
-    print("\n--- Pelicula encontrada ---")
+    print("\nPelícula recomendada:")
     print("Nombre:", nombre)
-    print(f"Duracion: {horas} horas y {minutos} minutos")
-    print("Calificacion:", calificacion)
+    print("Género:", genero)
+    print("Duración:", horas, "h", minutos, "min")
+    print("Calificación:", calificacion)
 
-# Función que compara el género
-def comparar_genero(genero_escogido, genero):
-    if genero_escogido == 1:
-        return genero == "Animación"
-    elif genero_escogido == 2:
-        return genero == "Comedia"
-    elif genero_escogido == 3:
-        return genero == "Romance"
-    elif genero_escogido == 4:
-        return genero == "Suspenso"
-    elif genero_escogido == 5:
-        return genero == "Ciencia ficción"
+
+# Compara el género elegido por el usuario con el de la película.
+def comparar_genero(genero_usuario, genero_pelicula):
+    return genero_usuario == genero_pelicula
+
+
+# Verifica si la duración de la película cumple con la opción elegida.
+def comparar_duracion(duracion_usuario, duracion_pelicula):
+    if duracion_usuario == 1:
+        return duracion_pelicula < 90
+    elif duracion_usuario == 2:
+        return duracion_pelicula >= 90 and duracion_pelicula <= 120
     else:
-        return False
+        return duracion_pelicula > 120
 
-# Función que compara la calificación
-def comparar_calificacion(calificacion, calificacion_minima):
-    return calificacion >= calificacion_minima
 
-# Función que compara la duración
-def comparar_duracion(duracion_escogida, duracion):
-    if duracion_escogida == 1:
-        return duracion < 90
-    elif duracion_escogida == 2:
-        return 90 <= duracion <= 120
-    elif duracion_escogida == 3:
-        return duracion > 120
+# Verifica si la película alcanza la calificación mínima seleccionada.
+def comparar_calificacion(calificacion_usuario, calificacion_pelicula):
+    if calificacion_usuario == 1:
+        return calificacion_pelicula >= 6.0
+    elif calificacion_usuario == 2:
+        return calificacion_pelicula >= 7.0
     else:
-        return False
-    
-# Función que decide si la película coincide con las preferencias
-def decidir_recomendacion(genero_coincide, duracion_coincide, calificacion_coincide):
-    if genero_coincide and duracion_coincide and calificacion_coincide:
-        return True
-    else:
-        return False
+        return calificacion_pelicula >= 8.0
 
-# Función principal del programa
+
+# Busca películas que coincidan con las preferencias del usuario.
+def decidir_recomendacion(genero, duracion, calificacion, peliculas):
+    encontro_pelicula = False
+
+    # Recorre la matriz y obtiene los datos de cada película.
+    for pelicula in peliculas:
+        nombre_actual = pelicula[0]
+        genero_actual = pelicula[1]
+        duracion_actual = pelicula[2]
+        calificacion_actual = pelicula[3]
+
+        # Compara los tres criterios con las preferencias del usuario.
+        coincide_genero = comparar_genero(genero, genero_actual)
+        coincide_duracion = comparar_duracion(duracion, duracion_actual)
+        coincide_calificacion = comparar_calificacion(calificacion, calificacion_actual)
+
+        # Si coinciden los tres criterios, muestra la película.
+        if coincide_genero and coincide_duracion and coincide_calificacion:
+            mostrar_pelicula(
+                nombre_actual,
+                genero_actual,
+                duracion_actual,
+                calificacion_actual
+            )
+            encontro_pelicula = True
+
+    # Si no hubo coincidencias en los tres criterios, busca películas
+    # que coincidan exactamente en dos de ellos.
+    if encontro_pelicula == False:
+        print("\nNo encontramos una película que coincida con tus 3 preferencias.")
+        print("Estas películas coinciden con 2 de tus preferencias:")
+
+        encontro_dos = False
+
+        # Revisa nuevamente cada película y cuenta sus coincidencias.
+        for pelicula in peliculas:
+            nombre_actual = pelicula[0]
+            genero_actual = pelicula[1]
+            duracion_actual = pelicula[2]
+            calificacion_actual = pelicula[3]
+
+            coincidencias = 0
+
+            if comparar_genero(genero, genero_actual):
+                coincidencias += 1
+
+            if comparar_duracion(duracion, duracion_actual):
+                coincidencias += 1
+
+            if comparar_calificacion(calificacion, calificacion_actual):
+                coincidencias += 1
+
+            # Si coincide exactamente en dos criterios, recomienda la película.
+            if coincidencias == 2:
+                mostrar_pelicula(
+                    nombre_actual,
+                    genero_actual,
+                    duracion_actual,
+                    calificacion_actual
+                )
+                encontro_dos = True
+
+        # Informa si tampoco se encontraron películas con dos coincidencias.
+        if encontro_dos == False:
+            print("No encontramos películas que coincidan con tus preferencias.")
+
+
+# Función principal que organiza la ejecución del programa.
 def main():
     mostrar_bienvenida()
-    otra_busqueda = "si"
-    while otra_busqueda == "si":
-        # Se piden las preferencias del usuario
-        genero_escogido = pedir_genero()
-        duracion_escogida = pedir_duracion()
-        calificacion_minima = pedir_calificacion()
+    busqueda = "si"
 
-        # Variables para saber si se encontraron películas
-        pelicula_encontrada = False
-        alternativa_encontrada = False
+    # Repite la búsqueda mientras el usuario quiera continuar.
+    while busqueda == "si":
 
-        # Primera busqueda: las 3 preferencias
-        for i in range(len(nombre_pelicula)):
-            # Obtiene los datos de la película que ocupa la posición actual en las listas
-            nombre_actual = nombre_pelicula[i]
-            genero_actual = genero_pelicula[i]
-            duracion_actual = duracion_pelicula[i]
-            calificacion_actual = calificacion_pelicula[i]
+        # Obtiene las tres preferencias del usuario.
+        genero = pedir_genero()
+        duracion = pedir_duracion()
+        calificacion = pedir_calificacion()
 
-            # Compara el género, la duración y la calificación de la película con 
-            # las preferencias del usuario.
+        # Envía las preferencias y la matriz a la función de recomendaciones.
+        decidir_recomendacion(
+            genero,
+            duracion,
+            calificacion,
+            peliculas
+        )
+        # Pregunta si el usuario quiere realizar otra búsqueda.
+        busqueda = input("\n¿Quieres buscar otra película? (si/no): ")
 
-            genero_coincide = comparar_genero(genero_escogido, genero_actual)
-            duracion_coincide = comparar_duracion(duracion_escogida, duracion_actual)
-            calificacion_coincide = comparar_calificacion(calificacion_actual, calificacion_minima)
+    print("\n¡Gracias por usar CineMatch!")
 
-            # Comprueba si las tres preferencias coinciden para determinar si se recomienda la película.
-            pelicula_recomendada = decidir_recomendacion(genero_coincide,duracion_coincide,
-                                                         calificacion_coincide)
-            
-            # Si la película cumple las tres preferencias, muestra sus datos y registra que se encontró una.
-            if pelicula_recomendada:
-                if not pelicula_encontrada:
-                    print("\nEncontramos peliculas que coinciden con todas tus preferencias!")
-                mostrar_pelicula(nombre_actual,duracion_actual,calificacion_actual)
-                pelicula_encontrada = True
-                
-        # Segunda búsqueda: si no hubo coincidencias con las tres preferencias,
-        # busca películas que cumplan exactamente dos de las tres.
-        if not pelicula_encontrada:
-            print("\nNo encontramos peliculas que coincidan con todas tus preferencias.")
-            print("Pero encontramos estas alternativas con 2 coincidencias:")
-
-            # Recorre nuevamente todas las películas para contar cuántas preferencias cumple cada una.
-            for i in range(len(nombre_pelicula)):
-                genero_coincide = comparar_genero(genero_escogido, genero_pelicula[i])
-                duracion_coincide = comparar_duracion(duracion_escogida, duracion_pelicula[i])
-                calificacion_coincide = comparar_calificacion(calificacion_pelicula[i], calificacion_minima)
-                
-                # Inicializa el contador de coincidencias en cero para la película actual.
-                coincidencias = 0
-
-                if genero_coincide:
-                    coincidencias = coincidencias + 1
-
-                if duracion_coincide:
-                    coincidencias = coincidencias + 1
-
-                if calificacion_coincide:
-                    coincidencias = coincidencias + 1
-                
-                # Si la película cumple exactamente dos preferencias, muestra sus datos
-                # y registra que se encontró al menos una alternativa.
-
-                if coincidencias == 2:
-                    mostrar_pelicula(nombre_pelicula[i], duracion_pelicula[i],calificacion_pelicula[i])
-                    alternativa_encontrada = True
-            
-            # Si ninguna película cumplió exactamente dos preferencias, muestra un mensaje al usuario.
-            if not alternativa_encontrada:
-                print("No encontramos peliculas con 2 coincidencias.")
-                
-        # Se pregunta si el usuario desea realizar otra búsqueda
-        otra_busqueda = input("\nQuieres realizar otra busqueda? (si o no): ")
-
-    print("\nGracias por usar CineMatch!")
-
-# Llama a la función principal para iniciar el programa.
+# Inicia el programa llamando a la función principal.
 main()
